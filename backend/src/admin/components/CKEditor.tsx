@@ -1,20 +1,11 @@
-import React from "react";
-import { CKEditor } from "@ckeditor/ckeditor5-react";
-import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
-import { sdk } from "../lib/sdk"; // jouw MedusaJS SDK import
-import type {
-  EventInfo,
-  Editor,
-  EditorConfig,
-  EditorWatchdog,
-  ContextWatchdog,
-  WatchdogConfig,
-} from "ckeditor5";
+import React from 'react';
+import { CKEditor } from '@ckeditor/ckeditor5-react';
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import { sdk } from '../lib/sdk'; // jouw MedusaJS SDK import
+import type { EventInfo, Editor, EditorConfig, EditorWatchdog, ContextWatchdog, WatchdogConfig } from 'ckeditor5';
 
 // Custom upload adapter
 class MedusaUploadAdapter {
-  loader: any;
-
   constructor(loader) {
     this.loader = loader;
   }
@@ -27,10 +18,10 @@ class MedusaUploadAdapter {
         if (res.files && res.files.length > 0) {
           return { default: res.files[0].url };
         } else {
-          throw new Error("No file URL returned");
+          throw new Error('No file URL returned');
         }
       } catch (err) {
-        console.error("Upload error:", err);
+        console.error('Upload error:', err);
         throw err;
       }
     });
@@ -43,48 +34,25 @@ class MedusaUploadAdapter {
 
 // Plugin om CKEditor upload adapter te registreren
 function MedusaUploadPlugin(editor) {
-  editor.plugins.get("FileRepository").createUploadAdapter = (loader) => {
+  editor.plugins.get('FileRepository').createUploadAdapter = (loader) => {
     return new MedusaUploadAdapter(loader);
   };
 }
 
-export default function MyEditor({
-  value,
-  onChange,
-}: {
-  value: string;
-  onChange: (event: EventInfo<string, unknown>, editor: Editor) => void;
-}) {
+export default function MyEditor({ value, onChange }: { value: string, onChange: ((event: EventInfo<string, unknown>, editor: Editor) => void) }) {
   return (
     <div>
       <CKEditor
-        editor={
-          ClassicEditor as unknown as {
-            create(...args: any[]): Promise<Editor>;
-            EditorWatchdog: typeof EditorWatchdog;
-            ContextWatchdog: typeof ContextWatchdog;
-          }
-        }
+        editor={ClassicEditor}
         config={{
           toolbar: [
-            "heading",
-            "|",
-            "bold",
-            "italic",
-            "link",
-            "bulletedList",
-            "numberedList",
-            "|",
-            "insertTable",
-            "imageUpload",
-            "blockQuote",
-            "undo",
-            "redo",
+            'heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList',
+            '|', 'insertTable', 'imageUpload', 'blockQuote', 'undo', 'redo'
           ],
           table: {
-            contentToolbar: ["tableColumn", "tableRow", "mergeTableCells"],
+            contentToolbar: ['tableColumn', 'tableRow', 'mergeTableCells'],
           },
-          extraPlugins: [MedusaUploadPlugin], // upload adapter registreren
+          extraPlugins: [MedusaUploadPlugin] // upload adapter registreren
         }}
         data={value}
         onChange={onChange}

@@ -10,7 +10,10 @@ const CustomPage = () => {
     name: string
   }
   type BrandsResponse = {
-    name:string
+    brands: Brand[]
+    count: number
+    limit: number
+    offset: number
   }
 
       const limit = 15

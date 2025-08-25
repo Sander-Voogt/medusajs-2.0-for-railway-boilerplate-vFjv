@@ -4,9 +4,7 @@ import Medusa from "@medusajs/js-sdk"
 
 // Init SDK
 const sdk = new Medusa({
-  //@ts-ignore
   baseUrl: import.meta.env.VITE_BACKEND_URL || "/",
-  //@ts-ignore
   debug: import.meta.env.DEV,
   auth: { type: "session" }, // of type: "api_key" als je admin API key gebruikt
 })

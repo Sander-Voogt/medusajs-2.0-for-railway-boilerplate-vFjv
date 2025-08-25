@@ -1,7 +1,6 @@
 {
   "compilerOptions": {
     "target": "ES2021",
-    "types": ["react"],
     "esModuleInterop": true,
     "module": "Node16",
     "moduleResolution": "Node16",

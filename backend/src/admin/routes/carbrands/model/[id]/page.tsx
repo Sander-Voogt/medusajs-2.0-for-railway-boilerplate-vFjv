@@ -33,7 +33,7 @@ const CustomPage = () => {
   const onSubmit = async (formValues: CarModel) => {
     setLoading(true)
     try {
-      const res:any = await sdk.client.fetch(`/admin/carmodels/${id}`, {
+      const res = await sdk.client.fetch(`/admin/carmodels/${id}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -94,21 +94,18 @@ const CustomPage = () => {
                 <Controller
                   control={form.control}
                   name="title"
-                  //@ts-ignore
                   render={({ field }) => <Input {...field} />}
                 />
 
                 <Label className="text-gray-500">Description</Label>
                 <MyEditor
                   value={form.watch("description") || ""}
-                  //@ts-ignore
                   onChange={(value) => form.setValue("description", value)}
                 />
 
                 <Label className="text-gray-500">Header description</Label>
                 <MyEditor
                   value={form.watch("ModelBannerDescription") || ""}
-                  //@ts-ignore
                   onChange={(value) => form.setValue("ModelBannerDescription", value)}
                 />
               </Tabs.Content>
