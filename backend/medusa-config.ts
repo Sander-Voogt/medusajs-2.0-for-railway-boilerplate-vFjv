@@ -24,7 +24,7 @@ import {
   MINIO_BUCKET,
   MEILISEARCH_HOST,
   MEILISEARCH_ADMIN_KEY
-} from './lib/constants.js'; // let op: .js extensie in ESM
+} from './src/lib/constants'; // let op: .js extensie in ESM
 
 loadEnv(process.env.NODE_ENV, process.cwd());
 
