@@ -24,7 +24,6 @@ import {
   MEILISEARCH_ADMIN_KEY
 } from 'lib/constants';
 
-
 loadEnv(process.env.NODE_ENV, process.cwd());
 
 const medusaConfig = {
@@ -51,6 +50,21 @@ const medusaConfig = {
     disable: SHOULD_DISABLE_ADMIN,
   },
   modules: [
+     {
+      resolve: "./src/modules/brand",
+    },
+    {
+      resolve: "./src/modules/carbrand",
+    },
+    {
+      resolve: "./src/modules/carmodel",
+    },
+    {
+      resolve: "./src/modules/productfeature",
+    },
+    {
+      resolve: "./src/modules/hello",
+    },
     {
       key: Modules.FILE,
       resolve: '@medusajs/file',
