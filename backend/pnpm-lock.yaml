@@ -123,8 +123,8 @@ importers:
         specifier: ^5.4.19
         version: 5.4.19(@types/node@20.19.11)
       zod:
-        specifier: ^4.1.1
-        version: 4.1.1
+        specifier: 3.25.76
+        version: 3.25.76
     devDependencies:
       '@medusajs/test-utils':
         specifier: 2.8.8
@@ -8500,9 +8500,6 @@ packages:
   zod@3.25.76:
     resolution: {integrity: sha512-gzUt/qt81nXsFGKIFcC3YnfEAx5NkunCfnDlvuBSSFS02bcXu4Lmea0AFIUwbLWxWPx3d9p8S5QoaujKcNQxcQ==}
 
-  zod@4.1.1:
-    resolution: {integrity: sha512-SgMZK/h8Tigt9nnKkfJMvB/mKjiJXaX26xegP4sa+0wHIFVFWVlsQGdhklDmuargBD3Hsi3rsQRIzwJIhTPJHA==}
-
   zwitch@2.0.4:
     resolution: {integrity: sha512-bXE4cR/kVZhKZX/RjPEflHaKVhUVl85noU3v6b8apfQEc1x4A+zBxjZ4lN8LqGd6WZ3dl98pY4o717VFmoPp+A==}
 
@@ -10239,6 +10236,8 @@ snapshots:
       '@ckeditor/ckeditor5-utils': 46.0.2
       '@ckeditor/ckeditor5-widget': 46.0.2
       ckeditor5: 46.0.2
+    transitivePeerDependencies:
+      - supports-color
 
   '@ckeditor/ckeditor5-mention@41.4.2':
     dependencies:
@@ -10313,6 +10312,8 @@ snapshots:
       '@ckeditor/ckeditor5-icons': 46.0.2
       '@ckeditor/ckeditor5-ui': 46.0.2
       '@ckeditor/ckeditor5-utils': 46.0.2
+    transitivePeerDependencies:
+      - supports-color
 
   '@ckeditor/ckeditor5-paste-from-office@41.4.2':
     dependencies:
@@ -19976,7 +19977,5 @@ snapshots:
       zod: 3.25.76
 
   zod@3.25.76: {}
-
-  zod@4.1.1: {}
 
   zwitch@2.0.4: {}
