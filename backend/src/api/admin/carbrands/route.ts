@@ -6,9 +6,9 @@ import {
     createCarModelWorkflow,
 } from "../../../workflows/create-carmodel"
 import { z } from "zod"
-import { PostAdminCreateCarModel } from "./validators"
+import { PostAdminCreateCarBrand } from "./validators"
 
-type PostAdminCreateBrandType = z.infer<typeof PostAdminCreateCarModel>
+type PostAdminCreateBrandType = z.infer<typeof PostAdminCreateCarBrand>
 
 
 export const POST = async (

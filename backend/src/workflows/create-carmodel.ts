@@ -7,25 +7,13 @@ import {
 import { CARMODEL_MODULE } from "../modules/carmodel"
 import CarModelModuleService from "../modules/carmodel/service"
 
-export type CreateBrandStepInput = {
-    name: string,
-    title: string,
-    intro: string,
-    description: string,
-    image: string
-}
 
-type CreateCarModelWorkflowInput = {
-    name: string,
-    title: string,
-    intro: string,
-    description: string,
-    image: string
-}
+
+export type CreateCarModelWorkflowInput = { name?: string; title?: string; intro?: string; description?: string; image?: string; }
 
 export const createBrandStep = createStep(
     "create-carmodel-step",
-    async (input: CreateBrandStepInput, { container }) => {
+    async (input: CreateCarModelWorkflowInput, { container }) => {
         const carmodelModuleService: CarModelModuleService = container.resolve(
             CARMODEL_MODULE
         )

@@ -10,7 +10,10 @@ import { createCustomStep } from "../create-custom-from-product/steps/create-cus
 export type UpdateCustomFromProductStepInput = {
     product: ProductDTO
     additional_data?: {
-        custom_name?: string | null
+        custom_name?: string | null,
+        faq?: Record<string, unknown> | null
+        video?: string | null,
+        maindescription?: string | null
     }
 }
 

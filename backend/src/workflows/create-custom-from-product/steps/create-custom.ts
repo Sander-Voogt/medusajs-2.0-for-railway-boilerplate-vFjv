@@ -4,7 +4,9 @@ import { HELLO_MODULE } from "../../../modules/hello"
 
 type CreateCustomStepInput = {
   custom_name?: string | null,
-  faq?: string | null
+  faq?: Record<string, unknown> | null
+  video?: string | null
+  maindescription?:string | null
 }
 
 export const createCustomStep = createStep(

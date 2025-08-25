@@ -1,4 +1,4 @@
-import { createWorkflow, transform, when, WorkflowResponse } from "@medusajs/framework/workflows-sdk"
+import { createWorkflow, ReturnWorkflow, transform, when, WorkflowResponse } from "@medusajs/framework/workflows-sdk"
 import { ProductDTO } from "@medusajs/framework/types"
 import { createRemoteLinkStep } from "@medusajs/medusa/core-flows"
 import { Modules } from "@medusajs/framework/utils"
@@ -12,7 +12,7 @@ export type CreateCustomFromProductWorkflowInput = {
   }
 }
 
-export const createCustomFromProductWorkflow = createWorkflow(
+export const createCustomFromProductWorkflow: any = createWorkflow(
   "create-custom-from-product",
   (input: CreateCustomFromProductWorkflowInput) => {
     const customName = transform(

@@ -8,7 +8,7 @@ import { BRAND_MODULE } from "../modules/brand"
 import BrandModuleService from "../modules/brand/service"
 
 export type CreateBrandStepInput = {
-    name: string
+    name?: string
 }
 
 export const createBrandStep = createStep(
@@ -33,9 +33,8 @@ export const createBrandStep = createStep(
 
 )
 
-type CreateBrandWorkflowInput = {
-    name: string
-}
+type CreateBrandWorkflowInput = { name?: string; }
+
 
 export const createBrandWorkflow = createWorkflow(
     "create-brand",
