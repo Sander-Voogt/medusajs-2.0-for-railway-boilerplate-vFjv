@@ -26,6 +26,7 @@ import {
 
 loadEnv(process.env.NODE_ENV, process.cwd());
 
+console.log(DATABASE_URL)
 const medusaConfig = {
   projectConfig: {
     databaseUrl: DATABASE_URL,
@@ -50,6 +51,9 @@ const medusaConfig = {
     disable: SHOULD_DISABLE_ADMIN,
   },
   modules: [
+    {
+      resolve: "./src/modules/hello",
+    },
     {
       key: Modules.FILE,
       resolve: '@medusajs/file',
