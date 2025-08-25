@@ -12,13 +12,14 @@
     "headless",
     "medusa"
   ],
-    "scripts": {
-    "build": "medusa build && node src/scripts/postBuild.js",
+  "scripts": {
+    "build": "medusa build",
     "seed": "medusa exec ./src/scripts/seed.ts",
-    "ib": "init-backend",
-    "start": "init-backend && cd .medusa/server && medusa start --verbose",
+    "start": "medusa start",
     "dev": "medusa develop",
-    "email:dev": "email dev --dir=./src/modules/email-notifications/templates --port=3002"
+    "test:integration:http": "TEST_TYPE=integration:http NODE_OPTIONS=--experimental-vm-modules jest --silent=false --runInBand --forceExit",
+    "test:integration:modules": "TEST_TYPE=integration:modules NODE_OPTIONS=--experimental-vm-modules jest --silent=false --runInBand --forceExit",
+    "test:unit": "TEST_TYPE=unit NODE_OPTIONS=--experimental-vm-modules jest --silent --runInBand --forceExit"
   },
   "dependencies": {
     "@ckeditor/ckeditor5-build-classic": "^41.4.2",
