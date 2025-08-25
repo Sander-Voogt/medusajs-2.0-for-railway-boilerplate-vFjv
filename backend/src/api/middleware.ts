@@ -5,21 +5,33 @@ import {
 } from "@medusajs/framework/http"
 import { PostAdminCreateCarBrand } from "./admin/carbrands/validators"
 import { PostAdminCreateCarModel } from "./admin/carmodels/validators"
-import { z } from "zod"
-import { createFindParams } from "@medusajs/medusa/api/utils/validators"
+import { z, type ZodRawShape } from "zod"
+
 import { PostAdminCreateBrand } from "./admin/brands/validators"
-export const GetBrandsSchema = createFindParams()
+
+export const GetBrandsSchema = z.object({
+  fields: z.string().optional(),
+  offset: z.number().optional().default(0),
+  limit: z.number().optional().default(50),
+  order: z.string().optional(),
+  with_deleted: z.boolean().optional(),
+})
+export type GetBrandsSchemaType = z.infer<typeof GetBrandsSchema>
+
+const additionalDataValidator: ZodRawShape = {
+  custom_name: z.string().optional(),
+  faq: z.string().optional(),
+  maindescription: z.string().optional(),
+}
+
 
 export default defineMiddlewares({
   routes: [
     {
       method: "POST",
       matcher: "/admin/products",
-      additionalDataValidator: {
-        custom_name: z.string().optional(),
-        faq: z.string().optional(),
-        maindescription: z.string().optional()
-      },
+      //@ts-ignore
+      additionalDataValidator: additionalDataValidator
     },
 
 
@@ -27,6 +39,8 @@ export default defineMiddlewares({
       matcher: "/admin/brands",
       method: "POST",
       middlewares: [
+        //@ts-ignore
+
         validateAndTransformBody(PostAdminCreateBrand),
       ],
     },
@@ -34,6 +48,8 @@ export default defineMiddlewares({
       matcher: "/admin/products",
       method: ["POST"],
       additionalDataValidator: {
+        //@ts-ignore
+
         brand_id: z.string().optional(),
       },
     },
@@ -42,6 +58,8 @@ export default defineMiddlewares({
       method: "GET",
       middlewares: [
         validateAndTransformQuery(
+          //@ts-ignore
+
           GetBrandsSchema,
           {
             defaults: [

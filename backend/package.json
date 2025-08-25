@@ -57,6 +57,7 @@
     "resend": "4.0.1",
     "tinymce": "^6.8.6",
     "ulid": "^2.4.0",
+    "validators": "link:@medusajs/medusa/api/utils/validators",
     "vite": "^5.4.19",
     "zod": "^4.1.1"
   },

@@ -116,6 +116,9 @@ importers:
       ulid:
         specifier: ^2.4.0
         version: 2.4.0
+      validators:
+        specifier: link:@medusajs/medusa/api/utils/validators
+        version: link:@medusajs/medusa/api/utils/validators
       vite:
         specifier: ^5.4.19
         version: 5.4.19(@types/node@20.19.11)
@@ -10102,6 +10105,8 @@ snapshots:
       '@ckeditor/ckeditor5-ui': 46.0.2
       '@ckeditor/ckeditor5-utils': 46.0.2
       ckeditor5: 46.0.2
+    transitivePeerDependencies:
+      - supports-color
 
   '@ckeditor/ckeditor5-integrations-common@2.2.3(ckeditor5@46.0.2)':
     dependencies:
@@ -10173,6 +10178,8 @@ snapshots:
       '@ckeditor/ckeditor5-ui': 46.0.2
       '@ckeditor/ckeditor5-utils': 46.0.2
       ckeditor5: 46.0.2
+    transitivePeerDependencies:
+      - supports-color
 
   '@ckeditor/ckeditor5-markdown-gfm@41.4.2':
     dependencies:
@@ -10290,6 +10297,8 @@ snapshots:
       '@ckeditor/ckeditor5-utils': 46.0.2
       '@ckeditor/ckeditor5-widget': 46.0.2
       ckeditor5: 46.0.2
+    transitivePeerDependencies:
+      - supports-color
 
   '@ckeditor/ckeditor5-paragraph@41.4.2':
     dependencies:
@@ -10380,11 +10389,6 @@ snapshots:
     dependencies:
       '@ckeditor/ckeditor5-ui': 41.4.2
       ckeditor5: 41.4.2
-    transitivePeerDependencies:
-      - bufferutil
-      - canvas
-      - supports-color
-      - utf-8-validate
 
   '@ckeditor/ckeditor5-show-blocks@46.0.2':
     dependencies:
