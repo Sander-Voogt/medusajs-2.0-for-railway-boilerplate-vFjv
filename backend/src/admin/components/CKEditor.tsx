@@ -1,5 +1,7 @@
 import React from 'react';
-import { CKEditor } from '@ckeditor/ckeditor5-react';
+(async () => {
+  const { CKEditor } = await import("@ckeditor/ckeditor5-react");
+})();
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { sdk } from '../lib/sdk'; // jouw MedusaJS SDK import
 import type { EventInfo, Editor, EditorConfig, EditorWatchdog, ContextWatchdog, WatchdogConfig } from 'ckeditor5';
