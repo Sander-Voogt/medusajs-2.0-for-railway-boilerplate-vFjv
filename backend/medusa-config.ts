@@ -26,7 +26,7 @@ import {
   MEILISEARCH_ADMIN_KEY
 } from './src/lib/constants'; // let op: .js extensie in ESM
 
-loadEnv(process.env.NODE_ENV, process.cwd());
+loadEnv(process.env.NODE_ENV ?? '', process.cwd());
 
 module.exports = defineConfig({
   projectConfig: {
@@ -35,17 +35,17 @@ module.exports = defineConfig({
     redisUrl: REDIS_URL,
     workerMode: WORKER_MODE,
     http: {
-      adminCors: ADMIN_CORS,
-      authCors: AUTH_CORS,
-      storeCors: STORE_CORS,
+      adminCors: ADMIN_CORS ?? '',
+      authCors: AUTH_CORS ?? '',
+      storeCors: STORE_CORS ?? '',
       jwtSecret: JWT_SECRET,
       cookieSecret: COOKIE_SECRET
     },
-    build: {
-      rollupOptions: {
-        external: ["@medusajs/dashboard"]
-      }
-    }
+    // build: {
+    //   rollupOptions: {
+    //     external: ["@medusajs/dashboard"]
+    //   }
+    // }
   },
   admin: {
     backendUrl: BACKEND_URL,

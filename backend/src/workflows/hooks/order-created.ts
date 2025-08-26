@@ -1,22 +1,26 @@
+import { MedusaContainer } from "@medusajs/framework"
 import { completeOrderWorkflow, createOrderWorkflow } from "@medusajs/medusa/core-flows"
 
 completeOrderWorkflow.hooks.ordersCompleted(
     (async ({ orders, additional_data }, { container }) => {
         for (const order in orders) {
-            const customerService = container.resolve("customerService")
+            const customerService:any = container.resolve("customerService")
 
             let customer
             let isExistingCustomer: boolean | null = null
 
             try {
                 // 1. Haal de klant op via customerService
+                //@ts-ignore
                 customer = await customerService.retrieve(order.customer_id, {
                     relations: ["addresses"],
                 })
 
                 isExistingCustomer = customer.has_account
             } catch (err) {
-                console.error(`❌ Fout bij ophalen klant ${order.customer_id}:`, err)
+                                //@ts-ignore
+
+                console.error(`❌ Fout bij ophalen klant ${order?.customer_id}:`, err)
                 return // Stop hier als we klant niet kunnen ophalen
             }
 

@@ -4,7 +4,9 @@ import { HELLO_MODULE } from "../../../modules/hello"
 
 type CreateCustomStepInput = {
   custom_name?: string | null,
-  faq?: string | null
+  video?: string | null,
+  faq?: string | null,
+  maindescription?: string | null
 }
 
 export const createCustomStep = createStep(
@@ -18,6 +20,7 @@ export const createCustomStep = createStep(
       HELLO_MODULE
     )
 
+    //@ts-ignore
     const custom = await helloModuleService.createCustoms(data)
 
     return new StepResponse(custom, custom)
@@ -26,6 +29,7 @@ export const createCustomStep = createStep(
     const helloModuleService: HelloModuleService = container.resolve(
       HELLO_MODULE
     )
+    //@ts-ignore
 
     await helloModuleService.deleteCustoms(custom.id)
   }

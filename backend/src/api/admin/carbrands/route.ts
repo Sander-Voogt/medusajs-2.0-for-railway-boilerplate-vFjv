@@ -6,9 +6,9 @@ import {
     createCarModelWorkflow,
 } from "../../../workflows/create-carmodel"
 import { z } from "zod"
-import { PostAdminCreateCarModel } from "./validators"
+import { PostAdminCreateCarBrand } from "./validators"
 
-type PostAdminCreateBrandType = z.infer<typeof PostAdminCreateCarModel>
+type PostAdminCreateBrandType = z.infer<typeof PostAdminCreateCarBrand>
 
 
 export const POST = async (
@@ -17,6 +17,7 @@ export const POST = async (
 ) => {
     const { result } = await createCarModelWorkflow(req.scope)
         .run({
+            //@ts-ignore
             input: req.body,
         })
 
@@ -35,6 +36,7 @@ export const GET = async (
         metadata: { count, take, skip } = {},
     } = await query.graph({
         entity: "carbrand",
+        //@ts-ignore
         fields: ["id", "name", "created_at", "carmodels.*"],
         ...req.queryConfig,
     })

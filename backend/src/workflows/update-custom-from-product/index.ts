@@ -11,6 +11,9 @@ export type UpdateCustomFromProductStepInput = {
     product: ProductDTO
     additional_data?: {
         custom_name?: string | null
+        faq?: string | null
+        video?: string | null
+        maindescription?: string | null
     }
 }
 
@@ -30,16 +33,20 @@ export const updateCustomFromProductWorkflow = createWorkflow(
             {
                 input,
                 products,
+                //@ts-ignore
             }, (data) =>
+                //@ts-ignore
             !data.products[0].custom &&
-            data.input.additional_data?.custom_name?.length > 0
+            //@ts-ignore
+
+            data?.input?.additional_data?.custom_name?.length > 0
         )
             .then(() => {
                 const custom = createCustomStep({
-                    custom_name: input.additional_data.custom_name,
-                    faq: input.additional_data.faq,
-                    video: input.additional_data.video,
-                    maindescription: input.additional_data.maindescription
+                    custom_name: input?.additional_data?.custom_name,
+                    faq: input?.additional_data?.faq,
+                    video: input?.additional_data?.video,
+                    maindescription: input?.additional_data?.maindescription
                 })
 
                 createRemoteLinkStep([{
@@ -60,21 +67,32 @@ export const updateCustomFromProductWorkflow = createWorkflow(
                 input,
                 products,
             }, (data) =>
+            //@ts-ignore
+
             data.products[0].custom && (
+                //@ts-ignore
+
                 data.input.additional_data?.custom_name === null ||
+                //@ts-ignore
+
                 data.input.additional_data?.custom_name.length === 0
             )
         )
             .then(() => {
                 deleteCustomStep({
+                                        //@ts-ignore
+
                     custom: products[0].custom,
                 })
 
                 dismissRemoteLinkStep({
                     [HELLO_MODULE]: {
+                        //@ts-ignore
+
                         custom_id: products[0].custom.id,
                     },
                 })
+                //@ts-ignore
 
                 return products[0].custom.id
             })
@@ -82,14 +100,25 @@ export const updateCustomFromProductWorkflow = createWorkflow(
         const updated = when({
             input,
             products,
+            //@ts-ignore
+
         }, (data) => data.products[0].custom && data.input.additional_data?.custom_name?.length > 0)
             .then(() => {
                 return updateCustomStep({
-                    id: products[0].custom.id,
-                    custom_name: input.additional_data.custom_name,
-                    faq: input.additional_data.faq,
-                    video: input.additional_data.video,
-                    maindescription: input.additional_data.maindescription
+                    //@ts-ignore
+                    id: products[0]?.custom?.id,
+                    //@ts-ignore
+
+                    custom_name: input?.additional_data?.custom_name,
+                    //@ts-ignore
+
+                    faq: input?.additional_data?.faq,
+                    //@ts-ignore
+
+                    video: input?.additional_data?.video,
+                    //@ts-ignore
+
+                    maindescription: input?.additional_data?.maindescription
                 })
             })
 
