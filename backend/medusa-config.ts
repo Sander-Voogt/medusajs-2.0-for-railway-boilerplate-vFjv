@@ -1,4 +1,3 @@
-loadEnv(process.env.NODE_ENV || "development", process.cwd())
 
 import { loadEnv, Modules, defineConfig } from '@medusajs/utils';
 import {
@@ -25,6 +24,8 @@ import {
   MEILISEARCH_HOST,
   MEILISEARCH_ADMIN_KEY
 } from './src/lib/constants'; // let op: .js extensie in ESM
+
+loadEnv(process.env.NODE_ENV || "development", process.cwd())
 
 loadEnv(process.env.NODE_ENV ?? '', process.cwd());
 
