@@ -11,7 +11,6 @@ export const GET = async (
 
   const baseConfig = {
     entity: "carbrand",
-    //@ts-ignore
     fields: ["id", "name", "created_at"],
     ...req.queryConfig,
   }

@@ -24,7 +24,6 @@ export const deleteCustomStep = createStep(
       HELLO_MODULE
     )
 
-    //@ts-ignore
     await helloModuleService.createCustoms(custom)
   }
 )

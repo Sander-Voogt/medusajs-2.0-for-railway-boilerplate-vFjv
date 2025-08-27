@@ -8,10 +8,7 @@ import { createCustomStep } from "./steps/create-custom"
 export type CreateCustomFromProductWorkflowInput = {
   product: ProductDTO
   additional_data?: {
-    custom_name?: string,
-    faq?: string | null
-    video?: string | null
-    maindescription?: string | null
+    custom_name?: string
   }
 }
 
@@ -22,7 +19,7 @@ export const createCustomFromProductWorkflow = createWorkflow(
       {
         input,
       },
-      (data) => data?.input?.additional_data?.custom_name || ""
+      (data) => data.input.additional_data.custom_name || ""
     )
 
     const custom = createCustomStep({

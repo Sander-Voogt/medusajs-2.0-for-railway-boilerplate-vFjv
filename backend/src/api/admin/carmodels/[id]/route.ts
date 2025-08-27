@@ -13,7 +13,6 @@ export const GET = async (
 
   const baseConfig = {
     entity: "carmodel",
-    //@ts-ignore
     fields: ["*"],
     ...req.queryConfig,
   }
@@ -56,7 +55,6 @@ export const POST = async (
     CARMODEL_MODULE
   )
 
-  //@ts-ignore
   const response = await CarModelModuleService.updateCarmodels(req.body)
   // const { result } = await CarModelModuleService.update(id, req.scope)
   //   .run({

@@ -17,7 +17,6 @@ export const POST = async (
 ) => {
     const { result } = await createCarModelWorkflow(req.scope)
         .run({
-            //@ts-ignore
             input: req.body,
         })
 
@@ -36,7 +35,6 @@ export const GET = async (
         metadata: { count, take, skip } = {},
     } = await query.graph({
         entity: "carbrands",
-        //@ts-ignore
         fields: ["name", "created_at"],
         ...req.queryConfig,
     })
